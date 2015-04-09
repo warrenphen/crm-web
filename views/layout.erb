@@ -3,10 +3,36 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-	<title>Title</title>
+	<title>CRM Application</title>
+
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
 </head>
 
 <body>
-	<%= yield %>
+
+
+<div class="container">
+
+<h1 class="page-header center">Customer Relationship Management</h1>
+
+		<div>
+			<nav>
+		        <ul class="nav nav-tabs nav-justified">
+		            <li><a href="/">Home</li>
+		            <li><a href="/contacts">Contacts</li>
+					<li><a href="/contacts/new">Add Contact</a></li>
+		        </ul>
+			</nav>
+		</div>
+
+		<div class="panel panel-default padding">
+			<%= yield %>
+		</div>
+
+			<footer class="well"> &copy; Warren Phen</footer>
+</div>
+
 </body>
 </html>
