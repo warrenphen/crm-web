@@ -2,7 +2,10 @@ require_relative 'rolodex'
 require_relative 'contact'
 require 'sinatra'
 
-$rolodex= Rolodex.new
+$rolodex = Rolodex.new
+$rolodex.add_contact(Contact.new("Johnny", "Bravo", "johnny@bitmakerlabs.com", "Rockstar"))
+# Temporary fake data so that we always find contact with id 1000.
+
 
 #routes
 get '/' do
@@ -24,4 +27,7 @@ post '/contacts' do
 	redirect to('/contacts')
 end
 
-
+get "/contacts/1000" do
+  @contact = $rolodex.find(1000)
+  erb :show_contact
+end
