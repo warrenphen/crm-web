@@ -1,8 +1,23 @@
 require_relative 'rolodex'
-require_relative 'contact'
 require 'sinatra'
+require 'data_mapper'
 
 $rolodex = Rolodex.new
+
+DataMapper.setup(:default, "sqlite3:database.sqlite3")
+
+class Contact
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :first_name, String
+  property :last_name, String
+  property :email, String
+  property :note, String
+end
+
+DataMapper.finalize
+DataMapper.auto_upgrade!
 
 #routes
 get '/' do
@@ -11,6 +26,7 @@ get '/' do
 end
 
 get '/contacts' do
+    @contacts = Contact.all
   	erb :contacts
 end
 
